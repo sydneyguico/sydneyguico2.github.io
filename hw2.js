@@ -1,0 +1,362 @@
+/*
+    Program name: Homework 1 HTML Form
+    Author: sydneyguico.github.io
+    Date created: 02/10/2026
+    Date last edited: 02/25/2026
+    Version: 1.0
+    By: Sydney Guico
+    Description: JS Code 2 to add Functions on Website Form
+*/
+
+//dynamic date js code
+const d = new Date();
+let text = d.toLocaleDateString();
+document.getElementById("today").innerHTML = text;
+
+//dynamic date js code
+let slider = document.getElementById("range");
+let output = document.getElementById("range-slider");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {output.innerHTML = this.value;};
+
+
+//validating first name
+
+function validateFname() {
+    let firstName = document.getElementById("fname").value.trim();
+    let errorBox = document.getElementById("fname-error");
+    let lettersOnly = /^[a-zA-Z'- ]+$/;
+
+    if (firstName === "") {
+        errorBox.innerHTML = "Please enter your first name.";
+        return false;
+    } else if (!lettersOnly.test(firstName)) {
+        errorBox.innerHTML = "Only letters, hyphens, and apostrophes are allowed.";
+        return false;
+    } else if (firstName.length < 2) {
+        errorBox.innerHTML = "First name must be at least 2 characters.";
+        return false;
+    } else if (firstName.length > 30) {
+        errorBox.innerHTML = "First name must be 30 characters or fewer.";
+        return false;
+    } else {
+        errorBox.innerHTML = "";
+        return true;
+    }
+
+}
+//validating middle name
+function validateMname() {
+    let mname = document.getElementById("mname").value;
+    const namePattern = /^[A-Z]$/;
+
+    //makes middle inital uppercase
+        mname = mname.toUpperCase();
+        document.getElementById("mname").value = mname;
+
+        if (!mname.match(namePattern)) { //checks if first name matches the pattern
+            document.getElementById("mname-error").innerHTML = "Middle inital must be a single uppercase letter";
+            return false;
+        } else {
+            document.getElementById("mname-error").innerHTML = "";
+            return true;
+        }
+    }
+
+//validating last name
+function validateFname() {
+    fname = document.getElementById("lname").value.trim();
+    var namePattern = /^[a-zA-Z'- ]+$/;
+
+        // checks if first name field is empty
+        if (lname == "") {
+            document.getElementById("lname-error").innerHTML = "Last name field cannot be empty"
+        return false;
+        } else if (lname != "") {
+        if (!lname.match(namePattern)) { //checks if first name matches the pattern
+            document.getElementById("lname-error").innerHTML = "Letters, apostrophes, and dashes only.";
+        return false;
+        } else if (lname.length < 2) { //checks if first name has at least 2 characters
+            document.getElementById("lname-error").innerHTML = "Last name cannot be less than 2 characters.";
+        return false;
+        } else if (lname.length > 30) { //check if first doesnt have more than 30 characters
+            doccument.getElementById("lame-error").innerHTML = "Last name cannot be more than 30 characters.";
+        return false;
+        } else {
+            document.getElementById("lname-error").innerHTML = "";
+            return true;
+        }
+}
+
+
+// validating dob
+function validateDob() {
+    dob = document.getElementById("dob");
+    let date = new Date(dob.value);
+    let maxDate = new Date().setFullYear(new Date().getFullYear() - 120);
+
+    if (date > new Date()) {
+        document.getElementById("dob-error").innerHTML = "Date cannot be in the future";
+        dob.value = "";
+        return false;
+    } else if (date < new Date(maxDate)) {
+        document.getElementById("dob-error").innerHTML = "Date cannot be more than 120 years ago";
+        dob.value = "";
+        return false;
+    } else {
+        document.getElementById("dob-error").innerHTML = "";
+        return true;
+    }
+}
+
+
+//validating SSN
+function validateSsn() {
+    const ssn = document.getElementById("ssn").value;
+
+    // Expression for SSN Pattern
+    const ssnR = /^[0-9]{3}-?[0-9]{2}-?[0-9]{4}$/;
+
+    if (!ssnR.test(ssn)) {
+        document.getElementById("ssn-error").innerHTML = 
+        "Please enter a valid Social Security Number";
+        return false;
+    } else {
+        document.getElementById("ssn-error").innerHTML = "";
+        return true;
+    }
+}
+
+//validating address
+function validateAddress1() {
+var ad1 = document.getElementById("address1"). value;
+console.log(ad1);
+console.log(ad1length);
+
+    if (ad1.length < 2) k 
+        {
+        document.getElementById("address1-error").innerHTML = "Please enter your address on address line"; 
+        return false;
+    } else {
+        document.getElementById ("address1-error").innerHTML = "";
+        return true;
+    }
+}
+
+
+//Js code for validating city
+function validateCity() {
+city = document.getElementById("city").value.trim(); I
+    if (!city) {
+        document. getElementById("city-error").innerHTML = "City cannot be left blank";
+    return false;
+    } else {
+        document.getElementById("city-error").innerHTML= "";
+    return true;
+    }
+}
+
+//validating zip code
+function validateZcode() {
+    const zipInput = document.getElementById("zcode");
+    let zip = zipInput.value.replace(/[^\d-]/g, ""); //removes any non-number & non-dash characters
+
+    if (!zip) {
+        document.getElementById("zcode-error").innerHTML =  "Zip code can't be blank";
+        return false;
+    }
+
+    if (zip.length > 5) {
+        zip = zip.slice(0, 5) + "-" + zip.slice(5, 9); //removes all digits after 5 numbers
+    } else {
+        zip = zip.slice(0, 5);
+    }
+
+    zipInput.value = zip;
+    document.getElementById("zcode-error").innerHTML = "";
+    return true;
+}
+
+//validating email
+function validateEmail() {
+    email = document.getElementById("email").value;
+    var emailR = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; // returns regular pattern to end email address
+
+    if (email =="") {
+    document.getElementById("email-error").innerHTML = "Email Address cannot be empty";
+    return false;
+    } else if (!email.match(emailR)) {
+        document.getElementById("email-error").innerHTML = "Please enter a valid Email Address";
+        return false;
+    } else {
+        document.getElementById("email-error".innerHTML = "";
+        return true:
+    }
+}
+
+//validating phone number 
+function validatePhonenum(){
+const phoneInput = document.getElementById("phonenum");
+const phone - phoneInput.value.replace(/\D/g,""); //removes all non-number characters
+if (phone.length != 10) {
+document.getElementById("phonenum-error").innerHTML = "Phone Number cannot be left blank";
+return false;
+}
+
+const formattedPhone =
+phone.slice(0,3) +"-"+ phone.slice(3,6) +"-"+ phone.slice(6,10)
+phoneInput.value = formattedPhone;
+document.getElementById("phonenum-error"). innerHTM= "";
+return true;
+}
+
+
+//validating username
+function validateUsername() {
+    username = document.getElementById("username").value.toLowerCase(); //username to lowercase
+    document.getElementById("username").value = uid; //display username in lowercase
+
+    if (username.length == 0) {
+        document.getElementById("username-error").innerHTML = "Username cannot be empty";
+        return false;
+    }
+
+    //checks if username doesn't start with number
+    if (!isNaN(username.charAt(0))) {
+        document.getElementById("username-error").innerHTML = 
+        "Username can't start with a number";
+        return false;
+    }
+
+    //to check id username consists of only letters, numbers, or underscores
+    let regex = /^[a-zA-Z0-9_-]+$/;
+    if (!regex.test(username)) {
+        document.getElementById("username-error").innerHTML = 
+        "Username can only have letters, numbers, underscores, and dashes";
+        return false;
+    } else if (username.length < 5) {
+        document.getElementById("username-error").innerHTML = 
+        "Username must be at least 5 characters";
+        return false;
+    } else if (username.length > 30) {
+        document.getElementById("username-error").innerHTML = 
+        "Username can't exceed 30 characters";
+        return false;
+    } else { //if all above is correct, then username is valid
+        document.getElementById("username-error").innerHTML = "";
+        return true;
+    }
+}
+
+//validating password
+function validatePass() {
+    const pass = document.getElementById("pass").value;
+    const username = document.getElementById("username").value;
+
+    //sets up error message and initalizes array
+    const errorMessage = [];
+
+    //checks for lowercase letters
+    if (!pass.match(/[a-z]/)) {
+        errorMessage.push("Enter at least one lowercase letter");
+    }
+    //checks for uppercase letters
+    if (!pass.match(/[A-Z]/)) {
+        errorMessage.push("Enter at least one uppercase letter");
+    }
+    //checks for numbers letters
+    if (!pass.match(/[0-9]/)) {
+        errorMessage.push("Enter at least one Number");
+    }
+    //checks for special characters
+    if (!pass.match(/[!\@#\$%&*\-_\\.+\(\)]/)) {
+        errorMessage.push("Enter at least one special character");
+    }
+    //checks for username not in password
+    if (pass == username || pass.includes(username)) {
+        errorMessage.push("Password cannot contain username");
+    }
+    //displays error message if theres errors
+    const errorContainer = document.querySelector(".pass-message");
+    errorContainer.innerHTML = errorMessage
+    .map(msg => `<span>${msg}</span><br>`)
+    .join("");
+}
+
+//confirm password
+function confirmPass() {
+    pword1 = document.getElementById("pass").value;
+    pword2 = document.getElementById("c_pass").value;
+
+    if (pass1 !== pass2) {
+        document.getElementById("pass2-error").innerHTML = 
+        "Passwords don't match";
+        return false;
+    } else {
+        document.getElementById("pass2-error").innerHTML = 
+        "Passwords match";
+        return true;
+    }
+}
+
+//implement review button
+
+function reviewInput() {
+    var formcontent = document.getElementById("signup");
+    var formoutput = "<table class='output'><tr><th colspan='2'>Review Your Information:</th></tr>";
+
+    for (var i = 0; i < formcontent.elements.length; i++) {
+        var el = formcontent.elements[i];
+        var datatype = el.type;
+        var name = el.name;
+        var value = el.value;
+
+        // skip elements with no name
+        if (!name) continue;
+
+        switch (datatype) {
+            case "checkbox":
+                if (el.checked) {
+                    formoutput += "<tr><td align='right'>" + name + "</td>";
+                    formoutput += "<td class='outputdata'>&#x2713;</td></tr>";
+                }
+                break;
+
+            case "radio":
+                if (el.checked) {
+                    formoutput += "<tr><td align='right'>" + name + "</td>";
+                    formoutput += "<td class='outputdata'>" + value + "</td></tr>";
+                }
+                break;
+
+            case "range":
+                // Only show the slider if the user moved it off the default (0)
+                if (value !== "0") {
+                    formoutput += "<tr><td align='right'>" + name + "</td>";
+                    formoutput += "<td class='outputdata'>" + value + "</td></tr>";
+                }
+                break;
+
+            case "button":
+            case "submit":
+            case "reset":
+                // skip
+                break;
+
+            default:
+                if (value !== "") {
+                    formoutput += "<tr><td align='right'>" + name + "</td>";
+                    formoutput += "<td class='outputdata'>" + value + "</td></tr>";
+                }
+        }
+    }
+
+    formoutput += "</table>";
+    document.getElementById("showInput").innerHTML = formoutput;
+}
+
+//remove user input
+function removeReview() {
+    document.getElementById("showInput").innerHTML = "";
+}
