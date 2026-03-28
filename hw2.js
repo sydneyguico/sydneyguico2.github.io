@@ -9,11 +9,10 @@
     Description: Validation functions for Cat Medical Patient Registry Form
 */
  
-
-
 //dynamic date js code
 const d = new Date();
 let text = d.toLocaleDateString();
+document.addEventListener("DOMContentLoaded", function() {
 document.getElementById("today").innerHTML = text;
 
 //dynamic date js code
@@ -21,8 +20,9 @@ let slider = document.getElementById("range");
 let output = document.getElementById("range-slider");
 output.innerHTML = slider.value;
 
-slider.oninput = function() {output.innerHTML = this.value;};
-
+slider.oninput = function() 
+{output.innerHTML = this.value;};
+});
 
 //validating first name
 function validateFname() {
