@@ -1,13 +1,14 @@
-/*
-    Program name: Homework 1 HTML Form
-    Author: sydneyguico.github.io
-    Date created: 02/10/2026
-    Date last edited: 02/25/2026
-    Version: 1.0
-    By: Sydney Guico
-    Description: JS Code 2 to add Functions on Website Form
-*/
 
+/*
+    Author: sydneyguico2.github.io
+    Program name: Homework 2 JavaScript
+    Date created: 02/10/2026
+    Date last edited: 03/27/2026
+    Version: 2.0
+    By: Sydney Guico
+    Description: Validation functions for Cat Medical Patient Registry Form
+*/
+ 
 //dynamic date js code
 const d = new Date();
 let text = d.toLocaleDateString();
