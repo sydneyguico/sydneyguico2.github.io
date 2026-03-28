@@ -9,6 +9,8 @@
     Description: Validation functions for Cat Medical Patient Registry Form
 */
  
+
+
 //dynamic date js code
 const d = new Date();
 let text = d.toLocaleDateString();
@@ -23,28 +25,29 @@ slider.oninput = function() {output.innerHTML = this.value;};
 
 
 //validating first name
-
 function validateFname() {
-    let firstName = document.getElementById("fname").value.trim();
-    let errorBox = document.getElementById("fname-error");
-    let lettersOnly = /^[a-zA-Z'- ]+$/;
+    fname = document.getElementById("fname").value.trim();
+    var namePattern = /^[a-zA-Z'- ]+$/;
 
-    if (firstName === "") {
-        errorBox.innerHTML = "Please enter your first name.";
+        // checks if first name field is empty
+        if (fname == "") {
+            document.getElementById("fname-error").innerHTML = "First name field cannot be empty"
         return false;
-    } else if (!lettersOnly.test(firstName)) {
-        errorBox.innerHTML = "Only letters, hyphens, and apostrophes are allowed.";
+        } else if (fname != "") {
+        if (!fname.match(namePattern)) { //checks if first name matches the pattern
+            document.getElementById("fname-error").innerHTML = "Letters, apostrophes, and dashes only.";
         return false;
-    } else if (firstName.length < 2) {
-        errorBox.innerHTML = "First name must be at least 2 characters.";
+        } else if (fname.length < 2) { //checks if first name has at least 2 characters
+            document.getElementById("fname-error").innerHTML = "First name cannot be less than 2 characters.";
         return false;
-    } else if (firstName.length > 30) {
-        errorBox.innerHTML = "First name must be 30 characters or fewer.";
+        } else if (fname.length > 30) { //check if first doesnt have more than 30 characters
+            document.getElementById("fame-error").innerHTML = "First name cannot be more than 30 characters.";
         return false;
-    } else {
-        errorBox.innerHTML = "";
+        } else {
+            document.getElementById("fname-error").innerHTML = "";
         return true;
-    }
+        }
+}
 
 }
 //validating middle name
@@ -66,8 +69,8 @@ function validateMname() {
     }
 
 //validating last name
-function validateFname() {
-    fname = document.getElementById("lname").value.trim();
+function validateLname() {
+    let lname = document.getElementById("lname").value.trim();
     var namePattern = /^[a-zA-Z'- ]+$/;
 
         // checks if first name field is empty
@@ -82,12 +85,13 @@ function validateFname() {
             document.getElementById("lname-error").innerHTML = "Last name cannot be less than 2 characters.";
         return false;
         } else if (lname.length > 30) { //check if first doesnt have more than 30 characters
-            doccument.getElementById("lame-error").innerHTML = "Last name cannot be more than 30 characters.";
+            document.getElementById("lame-error").innerHTML = "Last name cannot be more than 30 characters.";
         return false;
         } else {
             document.getElementById("lname-error").innerHTML = "";
             return true;
         }
+}
 }
 
 
@@ -133,24 +137,23 @@ function validateSsn() {
 function validateAddress1() {
 var ad1 = document.getElementById("address1"). value;
 console.log(ad1);
-console.log(ad1length);
+console.log(ad1.length);
 
-    if (ad1.length < 2) k 
-        {
+    if (ad1.length < 2) {
         document.getElementById("address1-error").innerHTML = "Please enter your address on address line"; 
         return false;
     } else {
-        document.getElementById ("address1-error").innerHTML = "";
+        document.getElementById("address1-error").innerHTML = "";
         return true;
-    }
+        }
 }
 
 
 //Js code for validating city
 function validateCity() {
-city = document.getElementById("city").value.trim(); I
+let city = document.getElementById("city").value.trim(); 
     if (!city) {
-        document. getElementById("city-error").innerHTML = "City cannot be left blank";
+        document.getElementById("city-error").innerHTML = "City cannot be left blank";
     return false;
     } else {
         document.getElementById("city-error").innerHTML= "";
@@ -191,15 +194,15 @@ function validateEmail() {
         document.getElementById("email-error").innerHTML = "Please enter a valid Email Address";
         return false;
     } else {
-        document.getElementById("email-error".innerHTML = "";
-        return true:
+        document.getElementById("email-error").innerHTML = "";
+        return true;
     }
 }
 
 //validating phone number 
-function validatePhonenum(){
+function validatePhone(){
 const phoneInput = document.getElementById("phonenum");
-const phone - phoneInput.value.replace(/\D/g,""); //removes all non-number characters
+const phone = phoneInput.value.replace(/\D/g,""); //removes all non-number characters
 if (phone.length != 10) {
 document.getElementById("phonenum-error").innerHTML = "Phone Number cannot be left blank";
 return false;
@@ -208,7 +211,7 @@ return false;
 const formattedPhone =
 phone.slice(0,3) +"-"+ phone.slice(3,6) +"-"+ phone.slice(6,10)
 phoneInput.value = formattedPhone;
-document.getElementById("phonenum-error"). innerHTM= "";
+document.getElementById("phonenum-error"). innerHTML= "";
 return true;
 }
 
@@ -216,7 +219,7 @@ return true;
 //validating username
 function validateUsername() {
     username = document.getElementById("username").value.toLowerCase(); //username to lowercase
-    document.getElementById("username").value = uid; //display username in lowercase
+    document.getElementById("username").value = username; //display username in lowercase
 
     if (username.length == 0) {
         document.getElementById("username-error").innerHTML = "Username cannot be empty";
@@ -287,8 +290,8 @@ function validatePass() {
 
 //confirm password
 function confirmPass() {
-    pword1 = document.getElementById("pass").value;
-    pword2 = document.getElementById("c_pass").value;
+    pass1 = document.getElementById("pass").value;
+    pass2 = document.getElementById("c_pass").value;
 
     if (pass1 !== pass2) {
         document.getElementById("pass2-error").innerHTML = 
