@@ -6,22 +6,20 @@
     Date last edited: 03/27/2026
     Version: 2.0
     By: Sydney Guico
-    Description: Validation functions for Cat Medical Patient Registry Form
+    Description: JS Validation functions for Cat Medical Patient Registry Form
 */
  
-
 //dynamic date js code
 const d = new Date();
-let text = d.toLocaleDateString();
-document.getElementById("today").innerHTML = text;
+    let text = d.toLocaleDateString();
+    document.getElementById("today").innerHTML = text;
 
 //dynamic date js code
 let slider = document.getElementById("range");
-let output = document.getElementById("range-slider");
-output.innerHTML = slider.value;
+    let output = document.getElementById("range-slider");
+    output.innerHTML = slider.value;
 
 slider.oninput = function() {output.innerHTML = this.value;};
-
 
 //validating first name
 function validateFname() {
@@ -33,14 +31,14 @@ function validateFname() {
             document.getElementById("fname-error").innerHTML = "First name field cannot be empty"
         return false;
         } else if (fname != "") {
-        if (!fname.match(namePattern)) { //checks if first name matches the pattern
+            if (!fname.match(namePattern)) { //checks if first name matches the pattern
             document.getElementById("fname-error").innerHTML = "Letters, apostrophes, and dashes only.";
-        return false;
+            return false;
         } else if (fname.length < 2) { //checks if first name has at least 2 characters
             document.getElementById("fname-error").innerHTML = "First name cannot be less than 2 characters.";
         return false;
         } else if (fname.length > 30) { //check if first doesnt have more than 30 characters
-            document.getElementById("fame-error").innerHTML = "First name cannot be more than 30 characters.";
+            document.getElementById("fname-error").innerHTML = "First name cannot be more than 30 characters.";
         return false;
         } else {
             document.getElementById("fname-error").innerHTML = "";
@@ -59,7 +57,7 @@ function validateMname() {
         document.getElementById("mname").value = mname;
 
         if (!mname.match(namePattern)) { //checks if first name matches the pattern
-            document.getElementById("mname-error").innerHTML = "Middle inital must be a single uppercase letter";
+            document.getElementById("mname-error").innerHTML = "Middle inital must be a single uppercase letter.";
             return false;
         } else {
             document.getElementById("mname-error").innerHTML = "";
@@ -69,12 +67,12 @@ function validateMname() {
 
 //validating last name
 function validateLname() {
-    let lname = document.getElementById("lname").value.trim();
+    lname = document.getElementById("lname").value.trim();
     var namePattern = /^[a-zA-Z'- ]+$/;
 
         // checks if first name field is empty
         if (lname == "") {
-            document.getElementById("lname-error").innerHTML = "Last name field cannot be empty"
+            document.getElementById("lname-error").innerHTML = "Last name field cannot be empty."
         return false;
         } else if (lname != "") {
         if (!lname.match(namePattern)) { //checks if first name matches the pattern
