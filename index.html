@@ -195,6 +195,7 @@
                     type="text" 
                     name="address1" 
                     id="address1" 
+                    minlength="2"
                     maxlength="30" 
                     title="Letters, apostrophes, and dashes only"
                     required 
@@ -213,13 +214,11 @@
                     type="text" 
                     name="address2" 
                     id="address2" 
+                    minlength="2"
                     maxlength="30" 
                     title="Please enter your address"
                     placeholder="2222 Address"
-                    onblur="validateAddress2()"
                     />
-                    <br>
-                    <span class="error" id="address2-error"></span>
                 </td>
             </tr>
 
@@ -230,6 +229,7 @@
                         type="text" 
                         name="city" 
                         id="city" 
+                        mxinlength="1" 
                         maxlength="30" 
                         title="Enter your city" 
                         required 
@@ -349,7 +349,7 @@
                         id="phone"
                         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                         required
-                        maxlength="12"
+                        maxlength="30"
                         title="Please enter your phone number"
                         required
                         placeholder="333-333-3333"
@@ -493,33 +493,34 @@
                                         </tr>
 
                                         </tr>
-                                            <td class="td1"><label for="pass">Password:</label></td>
+                                            <td class="td1"><label for="password">Password:</label></td>
                                             <td>
                                                 <input
                                                 type="password"
                                                 name="pass"
                                                 id="pass"
+                                                minlength="10"
                                                 maxlength="30"
                                                 required
-                                                title="Please enter a Password:"
+                                                title="Password must contain at least 10 characters, one uppercase, one number, one lowercase letter, and one special character."
                                                 placeholder="Enter password"
-                                                onblur="validatePword()"
-                                                oninput="validatePword()"
-                                                onfocus="validatePword()"
+                                                onblur="validatePass()"
+                                                oninput="validatePass()"
+                                                onfocus="validatePass()"
                                                 />
                                                 <br>
-                                                <span class="error" id="pass-error"></span>
+                                                <span class="error" id="pass1-error"></span>
                                             
                                             </td>
                                         </tr>
 
                                         </tr>
-                                            <td class="td1"><label for="c_pass">Confrim Password:</label></td>
+                                            <td class="td1"><label for="confirm_pass">Confrim Password:</label></td>
                                             <td>
                                                 <input
                                                 type="password"
-                                                name="c_pass"
-                                                id="c_pass"
+                                                name="confirm_pass"
+                                                id="confirm_pass"
                                                 minlength="10"
                                                 maxlength="30"
                                                 required
@@ -536,7 +537,7 @@
                                         </tr>
 
                                         <tr>
-                                            <td colspan="4">
+                                            <td class="td1"colspan="4">
                                                 <center>
                                                     <input type="submit" name="submit" id="submit" style="font-family: 'Arial', Helvetica, sans-serif;"> 
                                                     &nbsp;&nbsp;&nbsp; <!-- spaces between submit and reset-->
@@ -545,13 +546,13 @@
                                                     <input type="button" name="review" id="review" value="Review" style="font-family: 'Arial', Helvetica, sans-serif;" onclick="reviewInput()" 
                                                     />
                                                 </center>
-                                            </td>
-                                        </tr>
-                                     </table>
+                                                 </td>
+                                             </tr>
+                                         </table>
                                     </div>
 
                                 <!-- Dynamic Password Indicators -->
-                                    <div class="pword-message">
+                                    <div class="pass-message">
                                         <span id="msg1"></span> <br/>
                                         <span id="msg2"></span> <br/>
                                         <span id="msg3"></span> <br/>
@@ -562,7 +563,7 @@
                                         <span id="pass2-error"></span> <br/>
                                     </div>
 
-                                    <!--Displays user-entered data with JavaScript-->
+                                    <!--NEW Displays user-entered data with JavaScript-->
                                     <center>
                                     <p id="showInput"></p>
                                     </center>
@@ -573,11 +574,7 @@
                            <!-- Footer goes here-->
                                              
                         <footer>
-                                <div class="footer-content">
-                                    <p id="footer">
-                                        &#169; 2026 Cat Medical 
-                                        <a href="https://www.felinemedcenter.com/" target="_blank" rel="noopener noreferrer">Contact Us!</a>
-                                    </p>
+                                    <p id="footer"> &#169 2026 Cat Medical | <a href="https://www.felinemedcenter.com/" target="_blank" rel="noopener noreferrer">Contact Us!</a></p>
                                     <div class="address-box">
                                         <p>
                                             123 Cat Lane<br/>
@@ -589,4 +586,4 @@
                         </footer>
 
 
-                            <script src="hw2.js"></script><!-- links to js file-->
+                            <script src="hw2.js"></script>  <!-- links to js file-->
