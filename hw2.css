@@ -20,6 +20,7 @@ body {
     background: rgb(246, 220, 226);
     margin: 0;
     height: 100%;
+    max-height: 100%;
     min-height: 100vh; /* page will be height of the viewport */
 }
 
@@ -118,10 +119,10 @@ p {
 }
 
 /* Password Validation Message Container */
-.pword-message {
+.password-message {
     text-align: right;
-    font-family: Pick a font;
-    font-weight: "optima", sans-serif;
+    font-family: "optima", sans-serif;
+    font-weight: normal;
     position: relative;
     left: 100px;
     background: transparent;
