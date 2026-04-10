@@ -8,7 +8,7 @@
     By: Sydney Guico
     Description: JS Validation functions for Cat Medical Patient Registry Form
 */
-
+ 
 //dynamic date js code
 const d = new Date();
     let text = d.toLocaleDateString();
