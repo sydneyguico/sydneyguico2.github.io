@@ -15,6 +15,7 @@
                     <head>
                         <link rel="stylesheet" href="hw2.css"> <!-- links to css file-->
                         <title> New Patient Registry | Cat Medical </title>
+                        <title>New Patient Registry | Cat Medical</title>
                     </head>
                     <body>
                         <header>
@@ -31,7 +32,7 @@
                                    </td>
 
                                     <td valign="bottom" align="right" width="20%">
-                                        Today's Date: <span id="today"></span><!-- writes date-->
+                                        Today's Date: <span id="today"></span>   <!-- writes date-->
                                     </td>
                                 </tr>
                             </table>
@@ -39,7 +40,7 @@
                     <hr>
 
         <!-- Form Starts-->
-                    <form name="signup" id="signup" form action="thankyou2.html">
+                    <form name="signup" id="signup" action="thankyou2.html">
                         <center>
                             <div class="format">
                                 <table>
@@ -229,7 +230,7 @@
                         type="text" 
                         name="city" 
                         id="city" 
-                        mxinlength="1" 
+                        minlength="1" 
                         maxlength="30" 
                         title="Enter your city" 
                         required 
@@ -245,7 +246,7 @@
             </tr> 
                 <td class="td1"><label for="state">State:<Label></td>
                     <td>
-                        <select>
+                        <select name="state" id="state">
                         <option selected disabled>Please Select One</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
@@ -311,7 +312,7 @@
                         type="text" 
                         name="zcode" 
                         id="zcode" 
-                        maxlength="5" 
+                        maxlength="10" 
                         pattern="[0-9]{5}"
                         title="Numbers only" 
                         required 
@@ -403,9 +404,8 @@
                         Yes
                         <input
                         type="radio"
-                        name="insurance"
                         id="i2"
-                        name="vacc"
+                        name="insurance"
                         value="No"
                         />
                         No
@@ -416,17 +416,17 @@
                         <td class="td1"><label for="past_history"> Have you had:</label></td>
                         <td>
                                 
-                                <input type="checkbox" id="option1" value="Covid-19"> Covid-19
+                                <input type="checkbox" id="option1" name="Covid-19" value="Covid-19"> Covid-19
 
-                                <input type="checkbox" id="option2" value="Chicken Pox"> Chicken Pox
+                                <input type="checkbox" id="option2" name="Chicken Pox" value="Chicken Pox"> Chicken Pox
 
-                                <input type="checkbox" id="option3" value="Asthma"> Asthma
+                                <input type="checkbox" id="option3" name="Asthma" value="Asthma"> Asthma
 
-                                <input type="checkbox" id="option4" value="Stroke"> Measles
+                                <input type="checkbox" id="option4" name="Measles" value="Measles"> Measles
 
-                                <input type="checkbox" id="option5" value="Pneumonia"> Pneumonia
+                                <input type="checkbox" id="option5" name="Pneumonia" value="Pneumonia"> Pneumonia
 
-                                <input type="checkbox" id="option6" value="Tetanus"> Tetanus
+                                <input type="checkbox" id="option6" name="Tetanus" value="Tetanus"> Tetanus
                         </tr>
 
                          <!-- ALIGN & Describe Symptoms-->
@@ -446,7 +446,7 @@
                                             title="Please write a description on the Symptoms your experiencing..."
                                             placeholder="(Please explain)"
                                             ></textarea>
-                                            <span id="description text"></span>
+                                            <span id="description-text"></span>
                                         </td>
                                     </tr>
 
@@ -497,41 +497,41 @@
                                             <td>
                                                 <input
                                                 type="password"
-                                                name="pass"
-                                                id="pass"
+                                                name="password"
+                                                id="password"
                                                 minlength="10"
                                                 maxlength="30"
                                                 required
                                                 title="Password must contain at least 10 characters, one uppercase, one number, one lowercase letter, and one special character."
                                                 placeholder="Enter password"
-                                                onblur="validatePass()"
-                                                oninput="validatePass()"
-                                                onfocus="validatePass()"
+                                                onblur="validatePassword()"
+                                                oninput="validatePassword()"
+                                                onfocus="validatePassword()"
                                                 />
                                                 <br>
-                                                <span class="error" id="pass1-error"></span>
+                                                <span class="password-message" id="password-error"></span>
                                             
                                             </td>
                                         </tr>
 
                                         </tr>
-                                            <td class="td1"><label for="confirm_pass">Confrim Password:</label></td>
+                                            <td class="td1"><label for="confirm_password">Confrim Password:</label></td>
                                             <td>
                                                 <input
                                                 type="password"
-                                                name="confirm_pass"
-                                                id="confirm_pass"
+                                                name="confirm_password"
+                                                id="confirm_password"
                                                 minlength="10"
                                                 maxlength="30"
                                                 required
                                                 title="Please re-enter your Password:"
                                                 placeholder="Re-enter password"
-                                                onblur="confirmPass()"
-                                                oninput="confirmPass()"
-                                                onfocus="confirmPass()"
+                                                onblur="validateConfirmPassword()"
+                                                oninput="validateConfirmPassword()"
+                                                onfocus="validateConfirmPassword()"
                                                 />
                                                 <br>
-                                                <span class="error" id="pass2-error"></span>
+                                                <span class="password-message" id="confirm_password-error"></span>
                                             
                                             </td>
                                         </tr>
@@ -587,3 +587,4 @@
 
 
                             <script src="hw2.js"></script>  <!-- links to js file-->
+                            </html>
