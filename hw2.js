@@ -8,22 +8,26 @@
     By: Sydney Guico
     Description: JS Validation functions for Cat Medical Patient Registry Form
 */
- 
+ window.onload = function() {
 //dynamic date js code
 const d = new Date();
     let text = d.toLocaleDateString();
     document.getElementById("today").innerHTML = text;
 
-//dynamic date js code
+//range slider js code
 let slider = document.getElementById("range");
     let output = document.getElementById("range-slider");
+    if(slider && output) {
     output.innerHTML = slider.value;
 
-slider.oninput = function() {output.innerHTML = this.value;};
+    slider.oninput = function() {output.innerHTML = this.value;};
+    }
+};
+
 
 //validating first name
 function validateFname() {
-    fname = document.getElementById("fname").value.trim();
+    let fname = document.getElementById("fname").value.trim();
     var namePattern = /^[a-zA-Z'- ]+$/;
 
         // checks if first name field is empty
@@ -47,7 +51,7 @@ function validateFname() {
 }
 
 }
-//validating middle name
+//validating middle inital
 function validateMname() {
     let mname = document.getElementById("mname").value;
     const namePattern = /^[A-Z]$/;
@@ -67,7 +71,7 @@ function validateMname() {
 
 //validating last name
 function validateLname() {
-    lname = document.getElementById("lname").value.trim();
+    let lname = document.getElementById("lname").value.trim();
     var namePattern = /^[a-zA-Z'- ]+$/;
 
         // checks if first name field is empty
@@ -88,7 +92,7 @@ function validateLname() {
             document.getElementById("lname-error").innerHTML = "";
             return true;
         }
-}
+        }
 }
 
 
@@ -99,11 +103,11 @@ function validateDob() {
     let maxDate = new Date().setFullYear(new Date().getFullYear() - 120);
 
     if (date > new Date()) {
-        document.getElementById("dob-error").innerHTML = "Date cannot be in the future";
+        document.getElementById("dob-error").innerHTML = "Date cannot be in the future.";
         dob.value = "";
         return false;
     } else if (date < new Date(maxDate)) {
-        document.getElementById("dob-error").innerHTML = "Date cannot be more than 120 years ago";
+        document.getElementById("dob-error").innerHTML = "Date cannot be more than 120 years ago.";
         dob.value = "";
         return false;
     } else {
@@ -120,19 +124,21 @@ function validateSsn() {
     // Expression for SSN Pattern
     const ssnR = /^[0-9]{3}-?[0-9]{2}-?[0-9]{4}$/;
 
-    if (!ssnR.test(ssn)) {
-        document.getElementById("ssn-error").innerHTML = 
-        "Please enter a valid Social Security Number";
+    if (!ssnR.test(ssn)) 
+        {
+        document.getElementById("ssn-error").innerHTML =  "Please enter a valid Social Security Number";
         return false;
-    } else {
+        } 
+    else 
+        {
         document.getElementById("ssn-error").innerHTML = "";
         return true;
-    }
+         }
 }
 
 //validating address
 function validateAddress1() {
-var ad1 = document.getElementById("address1"). value;
+var ad1 = document.getElementById("address1").value;
 console.log(ad1);
 console.log(ad1.length);
 
@@ -149,6 +155,7 @@ console.log(ad1.length);
 //Js code for validating city
 function validateCity() {
 let city = document.getElementById("city").value.trim(); 
+
     if (!city) {
         document.getElementById("city-error").innerHTML = "City cannot be left blank";
     return false;
@@ -169,9 +176,9 @@ function validateZcode() {
     }
 
     if (zip.length > 5) {
-        zip = zip.slice(0, 5) + "-" + zip.slice(5, 9); //removes all digits after 5 numbers
+        zip = zip.slice(0,5) + "-" + zip.slice(5,9); //removes all digits after 5 numbers
     } else {
-        zip = zip.slice(0, 5);
+        zip = zip.slice(0,5);
     }
 
     zipInput.value = zip;
@@ -184,9 +191,9 @@ function validateEmail() {
     email = document.getElementById("email").value;
     var emailR = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; // returns regular pattern to end email address
 
-    if (email =="") {
-    document.getElementById("email-error").innerHTML = "Email Address cannot be empty";
-    return false;
+    if (email == "") {
+        document.getElementById("email-error").innerHTML = "Email Address cannot be empty";
+        return false;
     } else if (!email.match(emailR)) {
         document.getElementById("email-error").innerHTML = "Please enter a valid Email Address";
         return false;
@@ -198,24 +205,28 @@ function validateEmail() {
 
 //validating phone number 
 function validatePhone(){
-const phoneInput = document.getElementById("phonenum");
-const phone = phoneInput.value.replace(/\D/g,""); //removes all non-number characters
+    const phoneInput = document.getElementById("phone");
+    const phone = phoneInput.value.replace(/\D/g,""); //removes all non-number characters
+
 if (phone.length != 10) {
-document.getElementById("phonenum-error").innerHTML = "Phone Number cannot be left blank";
-return false;
+    document.getElementById("phone-error").innerHTML = "Phone Number cannot be left blank";
+    return false;
 }
 
 const formattedPhone =
 phone.slice(0,3) +"-"+ phone.slice(3,6) +"-"+ phone.slice(6,10)
 phoneInput.value = formattedPhone;
-document.getElementById("phonenum-error"). innerHTML= "";
+document.getElementById("phone-error"). innerHTML= "";
 return true;
 }
 
 
 //validating username
 function validateUsername() {
-    username = document.getElementById("username").value.toLowerCase(); //username to lowercase
+    username = document.getElementById("username").value;
+    
+    
+    username = username.toLowerCase(); //username to lowercase
     document.getElementById("username").value = username; //display username in lowercase
 
     if (username.length == 0) {
@@ -233,8 +244,7 @@ function validateUsername() {
     //to check id username consists of only letters, numbers, or underscores
     let regex = /^[a-zA-Z0-9_-]+$/;
     if (!regex.test(username)) {
-        document.getElementById("username-error").innerHTML = 
-        "Username can only have letters, numbers, underscores, and dashes";
+        document.getElementById("username-error").innerHTML =  "Username can only have letters, numbers, underscores, and dashes";
         return false;
     } else if (username.length < 5) {
         document.getElementById("username-error").innerHTML = 
@@ -251,51 +261,52 @@ function validateUsername() {
 }
 
 //validating password
-function validatePass() {
-    const pass = document.getElementById("pass").value;
+function validatePassword() {
+    const password = document.getElementById("password").value;
     const username = document.getElementById("username").value;
 
     //sets up error message and initalizes array
     const errorMessage = [];
 
     //checks for lowercase letters
-    if (!pass.match(/[a-z]/)) {
+    if (!password.match(/[a-z]/)) {
         errorMessage.push("Enter at least one lowercase letter");
     }
     //checks for uppercase letters
-    if (!pass.match(/[A-Z]/)) {
+    if (!password.match(/[A-Z]/)) {
         errorMessage.push("Enter at least one uppercase letter");
     }
     //checks for numbers letters
-    if (!pass.match(/[0-9]/)) {
+    if (!password.match(/[0-9]/)) {
         errorMessage.push("Enter at least one Number");
     }
     //checks for special characters
-    if (!pass.match(/[!\@#\$%&*\-_\\.+\(\)]/)) {
+    if (!password.match(/[!\@#\$%&*\-_\\.+\(\)]/)) {
         errorMessage.push("Enter at least one special character");
     }
     //checks for username not in password
-    if (pass == username || pass.includes(username)) {
+    if (username.length > 0 && (password === username || password.includes(username))) {
         errorMessage.push("Password cannot contain username");
     }
+    
     //displays error message if theres errors
-    const errorContainer = document.querySelector(".pass-message");
+    const errorContainer = document.getElementById("password-error");
     errorContainer.innerHTML = errorMessage
-    .map(msg => `<span>${msg}</span><br>`)
-    .join("");
+        .map(msg => `<span>${msg}</span><br>`)
+        .join("");
 }
 
 //confirm password
-function confirmPass() {
-    pass1 = document.getElementById("pass").value;
-    pass2 = document.getElementById("c_pass").value;
+function validateConfirmPassword() {
+    pass1 = document.getElementById("password").value;
+    pass2 = document.getElementById("confirm_password").value;
 
     if (pass1 !== pass2) {
-        document.getElementById("pass2-error").innerHTML = 
+        document.getElementById("confirm_password-error").innerHTML = 
         "Passwords don't match";
         return false;
     } else {
-        document.getElementById("pass2-error").innerHTML = 
+        document.getElementById("confirm_password-error").innerHTML = 
         "Passwords match";
         return true;
     }
@@ -320,14 +331,14 @@ function reviewInput() {
             case "checkbox":
                 if (el.checked) {
                     formoutput += "<tr><td align='right'>" + name + "</td>";
-                    formoutput += "<td class='outputdata'>&#x2713;</td></tr>";
+                    formoutput += "<td class='output'>&#x2713;</td></tr>";
                 }
                 break;
 
             case "radio":
                 if (el.checked) {
                     formoutput += "<tr><td align='right'>" + name + "</td>";
-                    formoutput += "<td class='outputdata'>" + value + "</td></tr>";
+                    formoutput += "<td class='output'>" + value + "</td></tr>";
                 }
                 break;
 
@@ -335,7 +346,7 @@ function reviewInput() {
                 // Only show the slider if the user moved it off the default (0)
                 if (value !== "0") {
                     formoutput += "<tr><td align='right'>" + name + "</td>";
-                    formoutput += "<td class='outputdata'>" + value + "</td></tr>";
+                    formoutput += "<td class='output'>" + value + "</td></tr>";
                 }
                 break;
 
@@ -348,7 +359,7 @@ function reviewInput() {
             default:
                 if (value !== "") {
                     formoutput += "<tr><td align='right'>" + name + "</td>";
-                    formoutput += "<td class='outputdata'>" + value + "</td></tr>";
+                    formoutput += "<td class='output'>" + value + "</td></tr>";
                 }
         }
     }
