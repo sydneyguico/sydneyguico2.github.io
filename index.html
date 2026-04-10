@@ -27,7 +27,7 @@
                                     </td>
 
                                     <td>
-                                    <h2>Cat Medical</h2> 
+                                        <h2>Cat Medical</h2> 
                                    </td>
 
                                     <td valign="bottom" align="right" width="20%">
@@ -39,38 +39,38 @@
                     <hr>
 
         <!-- Form Starts-->
-                    <form id="signup" action="thankyou2.html">
+                    <form name="signup" id="signup" form action="thankyou2.html">
                         <center>
                             <div class="format">
                                 <table>
                                     <tr>
                                         <th colspan="4">Create Patient Portal Account</th>   <!-- Patient Account Info section starts-->
                                     </tr>
-
+                                        <!-- Patient INFORMATION SECTION STARTS-->
 
                                         <!-- Patient Name (F,M,L)-->
                                         
                                         <tr>
-                        <td><label for="fname">First Name:</label></td>
-                        <td>
-                                        <input type="text" 
-                                        name="fname" 
-                                        id="fname" 
-                                        minlength="1"
-                                        maxlength="30" (change)
-                                        title="Letters, apostrophes, and dashes only"
-                                        pattern="[a-zA-Z']{1,30}"
-                                        onblur="validateFname()"
-                                        required 
-                                        placeholder="Sydney"
-                                        />
-                                        <br>
+                                            <td class="td1"><label for="fname">First Name:</label></td>
+                                             <td>
+                                                <input type="text" 
+                                                name="fname" 
+                                                id="fname" 
+                                                minlength="1"
+                                                maxlength="30"
+                                                title="Letters, apostrophes, and dashes only"
+                                                pattern="[a-zA-Z']{1,30}"
+                                                onblur="validateFname()"
+                                                required 
+                                                placeholder="Sydney"
+                                                />
+                                                <br>
                                         <span class="error" id="fname-error"></span>
                                      </td>
                                 </tr>
 
                                 <tr>
-                                    <td><label for="mname">Middle Initial:</label></td>
+                                    <td class="td1"><label for="mname">Middle Initial:</label></td>
                                     <td>
                                         <input type="text" 
                                         name="mname" 
@@ -80,7 +80,8 @@
                                         title="Letters only" 
                                         pattern="[a-zA-Z']{0,1}"
                                         onblur="validateMname()"
-                                        placeholder="R"/>
+                                        placeholder="R"
+                                        />
                                         <br>
                                         <span class="error" id="mname-error"></span>
                                     </td>   
@@ -88,7 +89,7 @@
 
                                 <tr>
                                     
-                                    <td><label for="lname">Last Name:</label></td>
+                                    <td class="td1"><label for="lname">Last Name:</label></td>
                                     <td>
                                         <input type="text" 
                                         name="lname" 
@@ -109,7 +110,7 @@
                 <!-- Patient Sex -->
 
                 <tr>
-                    <td> <label for= "psex">Patient's Sex: </label></td>
+                    <td class="td1"><label for= "psex">Patient's Sex: </label></td>
                     <td>
                         <input 
                         type="radio" 
@@ -147,7 +148,7 @@
 
                 <!-- D.O.B-->
                  <tr>
-            <td><label for="dob">Date of Birth:</label></td>
+            <td class="td1"><label for="dob">Date of Birth:</label></td>
                 <td>
                     <input 
                     type="date" 
@@ -163,7 +164,7 @@
 
                 <!-- SSN-->
             <tr>
-                <td><label for="ssn">Social Security Number:</label></td>
+                <td class="td1"><label for="ssn">Social Security Number:</label></td>
                 <td>
                     <input 
                     type="password" 
@@ -188,7 +189,7 @@
 
             <!-- Address -->
             <tr>
-                <td> <label for="address1">Address 1:</label></td>
+                <td class="td1"><label for="address1">Address 1:</label></td>
                 <td>
                     <input 
                     type="text" 
@@ -206,7 +207,7 @@
             </tr>
 
             </tr>
-                <td><label for="address2">Address 2:</label></td>
+                <td class="td1"><label for="address2">Address 2:</label></td>
                 <td>
                     <input 
                     type="text" 
@@ -223,7 +224,7 @@
             </tr>
 
             <tr> <!-- city -->
-                    <td><label for="city">City:</label></td>
+                    <td class="td1"><label for="city">City:</label></td>
                     <td>
                     <input
                         type="text" 
@@ -304,7 +305,7 @@
                 </tr>
 
                 <tr> <!-- zip code -->
-                    <td><label for="zcode">Zip Code:</label></td>
+                    <td class="td1"><label for="zcode">Zip Code:</label></td>
                     <td>
                     <input
                         type="text" 
@@ -323,7 +324,7 @@
             </tr>  
 
             </tr>  <!-- email -->
-                <td ><label for="email">Email Address:</label></td>
+                <td class="td1"><label for="email">Email Address:</label></td>
                 <td>
                     <input type="text"
                     name="email"
@@ -341,7 +342,7 @@
             </tr>
 
             <tr>  <!-- phone number -->
-                <td><label for="phone">Phone Number:</label></td>
+                <td class="td1"><label for="phone">Phone Number:</label></td>
                      <td>
                          <input type="text"
                         name="phone"
