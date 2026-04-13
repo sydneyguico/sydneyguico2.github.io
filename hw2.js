@@ -12,24 +12,17 @@
 //dynamic date js code
 const d = new Date();
     let text = d.toLocaleDateString();
-    let dateElement = document.getElementById("today");
-    if (dateElement) 
-    {
-        dateElement.innerHTML = text;
-    }
+    document.getElementById("today").innerHTML = text;
 
 //range slider js code
 let slider = document.getElementById("range");
-let output = document.getElementById("range-slider");
-if(slider && output) 
-    {
+    let output = document.getElementById("range-slider");
+    if(slider && output) {
     output.innerHTML = slider.value;
-    slider.oninput = function() 
-        {
-            output.innerHTML = this.value;
-        };
+
+    slider.oninput = function() {output.innerHTML = this.value;};
     }
- };
+};
 
 //validating first name
 function validateFname() {
