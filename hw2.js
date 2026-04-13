@@ -12,18 +12,24 @@
 //dynamic date js code
 const d = new Date();
     let text = d.toLocaleDateString();
-    document.getElementById("today").innerHTML = text;
+    let dateElement = document.getElementById("today");
+    if (dateElement) 
+    {
+        dateElement.innerHTML = text;
+    }
 
 //range slider js code
 let slider = document.getElementById("range");
-    let output = document.getElementById("range-slider");
-    if(slider && output) {
+let output = document.getElementById("range-slider");
+if(slider && output) 
+    {
     output.innerHTML = slider.value;
-
-    slider.oninput = function() {output.innerHTML = this.value;};
+    slider.oninput = function() 
+        {
+            output.innerHTML = this.value;
+        };
     }
-};
-
+ };
 
 //validating first name
 function validateFname() {
@@ -50,7 +56,6 @@ function validateFname() {
         }
 }
 
-}
 //validating middle inital
 function validateMname() {
     let mname = document.getElementById("mname").value;
@@ -86,7 +91,7 @@ function validateLname() {
             document.getElementById("lname-error").innerHTML = "Last name cannot be less than 2 characters.";
         return false;
         } else if (lname.length > 30) { //check if first doesnt have more than 30 characters
-            document.getElementById("lame-error").innerHTML = "Last name cannot be more than 30 characters.";
+            document.getElementById("lname-error").innerHTML = "Last name cannot be more than 30 characters.";
         return false;
         } else {
             document.getElementById("lname-error").innerHTML = "";
@@ -369,6 +374,9 @@ function reviewInput() {
 }
 
 //remove user input
-function removeReview() {
+function removeReview() 
+{
     document.getElementById("showInput").innerHTML = "";
 }
+
+};
