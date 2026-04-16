@@ -1,11 +1,9 @@
-/*
-    Program name: Homework 1 HTML Form
-    Author: sydneyguico.github.io
+/*  
+    Program Name: Homework 2 css form
+    Name: Sydney Guico
     Date created: 02/10/2026
-    Date last edited: 02/26/2026
-    Version: 1.0
-    By: Sydney Guico
-    Description: CSS Code to Visuals on Website Form 
+    Date Modified: 03/27/2026 
+    version: 2.0
 */
 
 header {
@@ -13,15 +11,15 @@ header {
     background-color: rgb(177, 231, 252);
 }
 
-body {
+body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: rgb(246, 220, 226);
+    background-color: rgb(246, 220, 226);
     margin: 0;
     height: 100%;
     max-height: 100%;
-    min-height: 100vh; /* page will be height of the viewport */
+    min-height: 100vh; /*make sure the page is height of the viewport*/
 }
 
 form {
@@ -37,7 +35,7 @@ h1, h2 {
 
 main {
     text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
     flex-grow: 1;
 }
@@ -62,14 +60,7 @@ footer {
     bottom: 0;
     width: 100%;
     background-color: rgb(231, 171, 186);
-    height: 7.0rem;
-}
-
-.address-box {
-    text-align: right;
-    font-family: "optima", sans-serif;
-    /* Increase this value to move the 123 Cat Lane address further to the left */
-    margin-right: 30px; 
+    height: 3.0 rem;
 }
 
 #footer {
@@ -101,26 +92,24 @@ textarea {
     text-align: left;
     font-family: "optima", sans-serif;
     font-weight: normal;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 p {
-    text-align: right;
+    text-align: center;
     font-family: "optima", sans-serif;
     font-weight: normal;
 }
 
-/* error message styling */
 .error {
     color: red;
     font-size: 12px;
-    font-family: "optima", sans-serif;
+    font-family:  "optima", sans-serif;
     font-weight: normal;
 }
 
-/* Password Validation Message Container */
-.password-message {
-    text-align: right;
+.pass-message {
+    text-align:  right;
     font-family: "optima", sans-serif;
     font-weight: normal;
     position: relative;
@@ -132,25 +121,22 @@ p {
     color: red;
 }
 
-/* Review Button Styling */
 #review {
     margin-top: 5px;
 }
 
-/* Output Table Styling */
 table.output,
 tr.output,
 td.output {
     width: 500px;
-    background-color:  rgb(246, 220, 226);
+    background-color: rgb(246, 220, 226);
     padding: 10px;
     border-spacing: 2px;
     border-radius: 20px;
-    color: black;
+    color:black
 }
 
-/* Individual Cell Styling for Output */
-td.output {
+td.outputdata {
     width: 500px;
     background-color: rgb(231, 171, 186);
     padding: 10px;
