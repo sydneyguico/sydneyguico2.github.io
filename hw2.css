@@ -63,17 +63,6 @@ footer {
     height: 3.0 rem;
 }
 
-.address-box {
-    margin-right: 30px; 
-    text-align: right; /* Forces text inside to the right */
-    font-family: "optima", sans-serif;
-}
-
-/* Add this to make sure the <p> inside the box doesn't center itself */
-.address-box p {
-    text-align: right;
-    margin: 0;
-
 #footer {
     text-align: right;
     font-family: "optima", sans-serif;
