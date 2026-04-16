@@ -1,14 +1,11 @@
-
-/*
-    Author: sydneyguico2.github.io
-    Program name: Homework 2 JavaScript
-    Date created: 02/10/2026
-    Date last edited: 03/27/2026
-    Version: 2.0
-    By: Sydney Guico
-    Description: JS Validation functions for Cat Medical Patient Registry Form
+/*  
+    Name: Sydney Guico
+    Date created: 02/1/2026
+    Date Modified:03/27/2026
+    Version: 2.0 
+    Purpose: JS Validation functions for Cat Medical Patient Registry form 
 */
- window.onload = function() {
+
 //dynamic date js code
 const d = new Date();
     let text = d.toLocaleDateString();
@@ -17,96 +14,91 @@ const d = new Date();
 //range slider js code
 let slider = document.getElementById("range");
     let output = document.getElementById("range-slider");
-    if(slider && output) {
     output.innerHTML = slider.value;
 
-    slider.oninput = function() {output.innerHTML = this.value;};
-    }
-};
+    slider.oninput = function () {output.innerHTML = this.value;};
 
 //validating first name
 function validateFname() {
-    let fname = document.getElementById("fname").value.trim();
-    var namePattern = /^[a-zA-Z'- ]+$/;
-
-        // checks if first name field is empty
-        if (fname == "") {
-            document.getElementById("fname-error").innerHTML = "First name field cannot be empty"
+    fname = document.getElementById("fname").value.trim();
+    var namePattern = /^[a-zA-Z'-]+$/;
+    // checks if first name field is empty
+    if (fname == "") {
+        document.getElementById("fname-error").innerHTML = "First name field cannot be empty"
         return false;
-        } else if (fname != "") {
-            if (!fname.match(namePattern)) { //checks if first name matches the pattern
-            document.getElementById("fname-error").innerHTML = "Letters, apostrophes, and dashes only.";
-            return false;
-        } else if (fname.length < 2) { //checks if first name has at least 2 characters
-            document.getElementById("fname-error").innerHTML = "First name cannot be less than 2 characters.";
+    } else if (fname != "") {
+        if (!fname.match(namePattern)) { //checks if first name matches the pattern
+        document.getElementById("fname-error").innerHTML = "Letters, apostrophes, and dashes only.";
         return false;
-        } else if (fname.length > 30) { //check if first doesnt have more than 30 characters
-            document.getElementById("fname-error").innerHTML = "First name cannot be more than 30 characters.";
+    } else if (fname.length < 2) { // checks if first name has at least 2 characters
+        document.getElementById("fname-error").innerHTML = "First name cannot be less than 2 characters.";
         return false;
-        } else {
-            document.getElementById("fname-error").innerHTML = "";
+    } else if (fname.length > 30) { //check if first doesnt have more than 30 characters
+        document.getElementById("fname-error").innerHTML = "First name cannot be more than 30 characters.";
+        return false;
+    } else {
+        document.getElementById("fname-error").innerHTML = "";
         return true;
-        }
+    }
+}
 }
 
-//validating middle inital
+//Validating Middle inital
 function validateMname() {
     let mname = document.getElementById("mname").value;
     const namePattern = /^[A-Z]$/;
-
     //makes middle inital uppercase
-        mname = mname.toUpperCase();
-        document.getElementById("mname").value = mname;
-
-        if (!mname.match(namePattern)) { //checks if first name matches the pattern
-            document.getElementById("mname-error").innerHTML = "Middle inital must be a single uppercase letter.";
-            return false;
-        } else {
-            document.getElementById("mname-error").innerHTML = "";
-            return true;
-        }
+    mname = mname.toUpperCase();
+    document.getElementById("mname").value = mname;
+    if (!mname.match(namePattern)) { //checks if middle inital matches pattern
+        document.getElementById("mname-error").innerHTML = "Middle inital must be a single uppercase letter.";
+        return false;
+    } else {
+        document.getElementById("mname-error").innerHTML = "";
+        return true;
     }
-
-//validating last name
-function validateLname() {
-    let lname = document.getElementById("lname").value.trim();
-    var namePattern = /^[a-zA-Z'- ]+$/;
-
-        // checks if first name field is empty
-        if (lname == "") {
-            document.getElementById("lname-error").innerHTML = "Last name field cannot be empty."
-        return false;
-        } else if (lname != "") {
-        if (!lname.match(namePattern)) { //checks if first name matches the pattern
-            document.getElementById("lname-error").innerHTML = "Letters, apostrophes, and dashes only.";
-        return false;
-        } else if (lname.length < 2) { //checks if first name has at least 2 characters
-            document.getElementById("lname-error").innerHTML = "Last name cannot be less than 2 characters.";
-        return false;
-        } else if (lname.length > 30) { //check if first doesnt have more than 30 characters
-            document.getElementById("lname-error").innerHTML = "Last name cannot be more than 30 characters.";
-        return false;
-        } else {
-            document.getElementById("lname-error").innerHTML = "";
-            return true;
-        }
-        }
 }
 
+//validating Last name
+function validateLname() {
+    lname = document.getElementById("lname").value.trim();
+    var namePattern = /^[a-zA-Z'-]+$/;
+    //checks if field is empty
+    if (lname == "") {
+        document.getElementById("lname-error").innerHTML = "Last name field cannot be empty"
+        return false;
+    } else if (lname != "") { //check if last name matches the pattern
+        if (!lname.match(namePattern)) {
+        document.getElementById("lname-error").innerHTML = "Letters, apostrophes, and dashes only.";
+        return false;
+    } else if (lname.length < 2) { //checks if last name has 2 characters
+        document.getElementById("lname-error").innerHTML = "Last name cannot be less than 2 characters.";
+        return false;
+    } else if (lname.length > 30) { //check if last name doesnt have more than 30 characters
+        document.getElementById("lname-error").innerHTML = "Last name cannot be more than 30 characters.";
+        return false;
+    } else {
+        document.getElementById("lname-error").innerHTML = "";
+        return true;
+    }
+    }
+}
 
-// validating dob
+// Js code for validating Date of Birth
 function validateDob() {
     dob = document.getElementById("dob");
     let date = new Date(dob.value);
     let maxDate = new Date().setFullYear(new Date().getFullYear() - 120);
 
     if (date > new Date()) {
-        document.getElementById("dob-error").innerHTML = "Date cannot be in the future.";
-        dob.value = "";
+        document.getElementById("dob-error").innerHTML = 
+        "Date cannot be in the future.";
+        dob.value="";
         return false;
-    } else if (date < new Date(maxDate)) {
-        document.getElementById("dob-error").innerHTML = "Date cannot be more than 120 years ago.";
-        dob.value = "";
+    } else if(date < new Date(maxDate)) {
+        document.getElementById("dob-error").innerHTML =
+        "Date cannot be more than 120 years ago.";
+        dob.value="";
         return false;
     } else {
         document.getElementById("dob-error").innerHTML = "";
@@ -114,67 +106,64 @@ function validateDob() {
     }
 }
 
-
-//validating SSN
+// Js code for validating SSN
 function validateSsn() {
     const ssn = document.getElementById("ssn").value;
 
-    // Expression for SSN Pattern
+    // Regular Expression for SSN pattern
     const ssnR = /^[0-9]{3}-?[0-9]{2}-?[0-9]{4}$/;
 
-    if (!ssnR.test(ssn)) 
-        {
-        document.getElementById("ssn-error").innerHTML =  "Please enter a valid Social Security Number";
+    if (!ssnR.test(ssn)) {
+        document.getElementById("ssn-error").innerHTML = 
+        "Please enter a valid Social Security Number.";
         return false;
-        } 
-    else 
-        {
+    } else {
         document.getElementById("ssn-error").innerHTML = "";
         return true;
-         }
+    }
 }
 
-//validating address
+// Js code for validating Address 1
 function validateAddress1() {
-var ad1 = document.getElementById("address1").value;
-console.log(ad1);
-console.log(ad1.length);
+    var ad1 = document.getElementById("address1").value;
+    console.log(ad1);
+    console.log(ad1.length);
 
     if (ad1.length < 2) {
-        document.getElementById("address1-error").innerHTML = "Please enter your address on address line"; 
+        document.getElementById("address1-error").innerHTML = 
+        "Please enter your address on address line";
         return false;
     } else {
         document.getElementById("address1-error").innerHTML = "";
         return true;
-        }
+    }  
 }
-
 
 //Js code for validating city
 function validateCity() {
-let city = document.getElementById("city").value.trim(); 
+    city = document.getElementById("city").value.trim();
 
     if (!city) {
         document.getElementById("city-error").innerHTML = "City cannot be left blank";
-    return false;
+        return false;
     } else {
-        document.getElementById("city-error").innerHTML= "";
-    return true;
+        document.getElementById("city-error").innerHTML = "";
+        return true;
     }
 }
 
-//validating zip code
+// Js code for validating Zip Code
 function validateZcode() {
     const zipInput = document.getElementById("zcode");
-    let zip = zipInput.value.replace(/[^\d-]/g, ""); //removes any non-number & non-dash characters
+    let zip = zipInput.value.replace(/[^\d-]/g, ""); // removes any non-number and non-dash characters
 
     if (!zip) {
-        document.getElementById("zcode-error").innerHTML =  "Zip code can't be blank";
+        document.getElementById("zcode-error").innerHTML =
+        "Zip Code cannot be left blank";
         return false;
     }
-
     if (zip.length > 5) {
-        zip = zip.slice(0,5) + "-" + zip.slice(5,9); //removes all digits after 5 numbers
+        zip = zip.slice(0,5) + "-" + zip.slice(5,9); // removes all digits after 5 numbers
     } else {
         zip = zip.slice(0,5);
     }
@@ -184,16 +173,18 @@ function validateZcode() {
     return true;
 }
 
-//validating email
+//Js code for validating email
 function validateEmail() {
     email = document.getElementById("email").value;
-    var emailR = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; // returns regular pattern to end email address
+    var emailR = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; //regular expression pattern thing for email
 
     if (email == "") {
-        document.getElementById("email-error").innerHTML = "Email Address cannot be empty";
+        document.getElementById("email-error").innerHTML =
+        "Email Address cannot be empty";
         return false;
     } else if (!email.match(emailR)) {
-        document.getElementById("email-error").innerHTML = "Please enter a valid Email Address";
+        document.getElementById("email-error").innerHTML = 
+        "Please enter a valid Email Address";
         return false;
     } else {
         document.getElementById("email-error").innerHTML = "";
@@ -201,117 +192,118 @@ function validateEmail() {
     }
 }
 
-//validating phone number 
-function validatePhone(){
-    const phoneInput = document.getElementById("phone");
+// Js code for validating phone number
+function validatePhonenum() {
+    const phoneInput = document.getElementById("phonenum");
     const phone = phoneInput.value.replace(/\D/g,""); //removes all non-number characters
 
-if (phone.length != 10) {
-    document.getElementById("phone-error").innerHTML = "Phone Number cannot be left blank";
-    return false;
+    if (phone.length != 10) {
+        document.getElementById("phonenum-error").innerHTML = 
+        "Phone Number cannot be left blank";
+        return false;
+    }
+
+    const formattedPhone = 
+    phone.slice(0,3) +"-"+ phone.slice(3,6) +"-"+ phone.slice(6,10)
+    phoneInput.value = formattedPhone;
+    document.getElementById("phonenum-error").innerHTML = "";
+    return true;
 }
 
-const formattedPhone =
-phone.slice(0,3) +"-"+ phone.slice(3,6) +"-"+ phone.slice(6,10)
-phoneInput.value = formattedPhone;
-document.getElementById("phone-error"). innerHTML= "";
-return true;
-}
-
-
-//validating username
+//js code for username validation
 function validateUsername() {
     username = document.getElementById("username").value;
-    
-    
-    username = username.toLowerCase(); //username to lowercase
-    document.getElementById("username").value = username; //display username in lowercase
 
-    if (username.length == 0) {
-        document.getElementById("username-error").innerHTML = "Username cannot be empty";
+    //converts username to lowercase
+    username = username.toLowerCase();
+    // display username in lowercase
+    document.getElementById("username").value = username;
+
+    if (username.length === 0) {
+        document.getElementById("username-error").innerHTML =
+        "Username field cannot be empty";
         return false;
     }
 
-    //checks if username doesn't start with number
-    if (!isNaN(username.charAt(0))) {
-        document.getElementById("username-error").innerHTML = 
-        "Username can't start with a number";
+    //checks that username doesn't start with a number
+    if (!isNaN(username.charAt(0))){
+        document.getElementById("username-error").innerHTML =
+        "username cannot beign with a number";
         return false;
     }
-
-    //to check id username consists of only letters, numbers, or underscores
-    let regex = /^[a-zA-Z0-9_-]+$/;
+    //checks if username consists of only letter, number, or underscores
+    let regex = /^[a-zA-Z0-9_]+$/;
     if (!regex.test(username)) {
-        document.getElementById("username-error").innerHTML =  "Username can only have letters, numbers, underscores, and dashes";
-        return false;
-    } else if (username.length < 5) {
         document.getElementById("username-error").innerHTML = 
-        "Username must be at least 5 characters";
+        "Username can only contain letters, numbers, or underscores";
+        return false;
+        //checks if username does not have 30 characters
+    } else if (username.length < 5 ) {
+         document.getElementById("username-error").innerHTML =
+        "Username cannot be less than 5 characters";
         return false;
     } else if (username.length > 30) {
-        document.getElementById("username-error").innerHTML = 
-        "Username can't exceed 30 characters";
+        document.getElementById("username-error").innerHTML =
+        "Username cannot exceed 30 characters";
         return false;
-    } else { //if all above is correct, then username is valid
+    } else { //if all of the above is correct then username is valid
         document.getElementById("username-error").innerHTML = "";
         return true;
     }
 }
 
-//validating password
-function validatePassword() {
-    const password = document.getElementById("password").value;
+//Js code for password validation
+function validatePass() {
+    const pass = document.getElementById("pass").value;
     const username = document.getElementById("username").value;
 
-    //sets up error message and initalizes array
+    //sets up and initalizes array
     const errorMessage = [];
 
     //checks for lowercase letters
-    if (!password.match(/[a-z]/)) {
+    if (!pass.match(/[a-z]/)) {
         errorMessage.push("Enter at least one lowercase letter");
     }
     //checks for uppercase letters
-    if (!password.match(/[A-Z]/)) {
+    if (!pass.match(/[A-Z]/)) {
         errorMessage.push("Enter at least one uppercase letter");
     }
     //checks for numbers letters
-    if (!password.match(/[0-9]/)) {
+    if (!pass.match(/[0-9]/)) {
         errorMessage.push("Enter at least one Number");
     }
     //checks for special characters
-    if (!password.match(/[!\@#\$%&*\-_\\.+\(\)]/)) {
+    if (!pass.match(/[!\@#\$%&*\-_\\.+\(\)]/)) {
         errorMessage.push("Enter at least one special character");
     }
     //checks for username not in password
-    if (username.length > 0 && (password === username || password.includes(username))) {
+    if (pass == username || pass.includes(username)) {
         errorMessage.push("Password cannot contain username");
     }
-    
     //displays error message if theres errors
-    const errorContainer = document.getElementById("password-error");
+    const errorContainer = document.querySelector(".pass-message");
     errorContainer.innerHTML = errorMessage
-        .map(msg => `<span>${msg}</span><br>`)
-        .join("");
+    .map(msg => `<span>${msg}</span><br>`)
+    .join("");
 }
 
-//confirm password
-function validateConfirmPassword() {
-    pass1 = document.getElementById("password").value;
-    pass2 = document.getElementById("confirm_password").value;
+//js for confirm password validation js code
+function confirmPass() {
+    pass1 = document.getElementById("pass").value;
+    pass2 = document.getElementById("c_pass").value;
 
-    if (pass1 !== pass2) {
-        document.getElementById("confirm_password-error").innerHTML = 
-        "Passwords don't match";
+    if (pass1 !== pass2){
+        document.getElementById("pass2-error").innerHTML =
+        "Password do not match";
         return false;
     } else {
-        document.getElementById("confirm_password-error").innerHTML = 
-        "Passwords match";
+        document.getElementById("pass2-error").innerHTML =
+        "Password match";
         return true;
     }
 }
 
-//implement review button
-
+// js code for the review button
 function reviewInput() {
     var formcontent = document.getElementById("signup");
     var formoutput = "<table class='output'><tr><th colspan='2'>Review Your Information:</th></tr>";
@@ -329,14 +321,14 @@ function reviewInput() {
             case "checkbox":
                 if (el.checked) {
                     formoutput += "<tr><td align='right'>" + name + "</td>";
-                    formoutput += "<td class='output'>&#x2713;</td></tr>";
+                    formoutput += "<td class='outputdata'>&#x2713;</td></tr>";
                 }
                 break;
 
             case "radio":
                 if (el.checked) {
                     formoutput += "<tr><td align='right'>" + name + "</td>";
-                    formoutput += "<td class='output'>" + value + "</td></tr>";
+                    formoutput += "<td class='outputdata'>" + value + "</td></tr>";
                 }
                 break;
 
@@ -344,7 +336,7 @@ function reviewInput() {
                 // Only show the slider if the user moved it off the default (0)
                 if (value !== "0") {
                     formoutput += "<tr><td align='right'>" + name + "</td>";
-                    formoutput += "<td class='output'>" + value + "</td></tr>";
+                    formoutput += "<td class='outputdata'>" + value + "</td></tr>";
                 }
                 break;
 
@@ -357,7 +349,7 @@ function reviewInput() {
             default:
                 if (value !== "") {
                     formoutput += "<tr><td align='right'>" + name + "</td>";
-                    formoutput += "<td class='output'>" + value + "</td></tr>";
+                    formoutput += "<td class='outputdata'>" + value + "</td></tr>";
                 }
         }
     }
@@ -367,9 +359,7 @@ function reviewInput() {
 }
 
 //remove user input
-function removeReview() 
-{
+function removeReview() {
     document.getElementById("showInput").innerHTML = "";
 }
 
-};
