@@ -63,9 +63,9 @@ footer {
     height: 3.0 rem;
 }
 
-.address-box {
-    margin-right: 30px; 
+.address-box p {
     text-align: right;
+    margin-right: 30px; 
     font-family: "optima", sans-serif;
     /* Increase this value to move the 123 Cat Lane address further to the right */
 }
